@@ -39,6 +39,16 @@ export default function Registration(){
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        
+        console.log(event.target);
+        
+        const formData = new FormData(event.target);
+        
+        const nameValue = formData.get('name');
+        const emailValue = formData.get('email');
+        const passwordValue = formData.get('password');
+
+        alert(`Submitted: ${nameValue} --- ${emailValue}`);
     
         if (validateForm()) {
             try {
@@ -56,7 +66,6 @@ export default function Registration(){
                     alert("Registered successfully.");
                 }
     
-                // Clear input fields after successful registration
                 name.current.value = "";
                 email.current.value = "";
                 password.current.value = "";
